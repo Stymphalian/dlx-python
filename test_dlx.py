@@ -1,10 +1,9 @@
-import unittest
 import dlx
+
+import unittest
 from pprint import pprint
 
-
 class TestDLX2Node(unittest.TestCase):
-
     def assertLeftRight(self, node, left, right):
         self.assertEqual(node.left, left)
         self.assertEqual(node.right, right)
@@ -149,20 +148,6 @@ class TestDLX2(unittest.TestCase):
         self.row4Ids = [16, 17, 18]
         self.row5Ids = [19, 20, 21, 22]
         self.row6Ids = [23, 24]
-
-    def test_upper(self):
-        self.assertEqual('foo'.upper(), 'FOO')
-
-    def test_isupper(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
-
-    def test_split(self):
-        s = 'hello world'
-        self.assertEqual(s.split(), ['hello', 'world'])
-        # check that s.split fails when the separator is not a string
-        with self.assertRaises(TypeError):
-            s.split(2)
 
     def testLinkTogether(self):
         d = dlx.DLX()
@@ -372,7 +357,9 @@ class TestDLX2(unittest.TestCase):
     def testCoverAndUncoverRow(self):
         beforeRep = self.dlx._getDlxRepresentation()
         self.dlx._coverColumn(self.dlx.columnIds[0])
+        self.dlx._uncoverColumn(self.dlx.columnIds[0])
         afterRep = self.dlx._getDlxRepresentation()
+        self.assertDictEqual(beforeRep, afterRep)
         # pprint(self.dlx._createMatrix(beforeRep, True))
         # pprint(self.dlx._createMatrix(afterRep, True))
 

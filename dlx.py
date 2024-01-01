@@ -338,7 +338,6 @@ class DLX:
         matrix = []
         if pretty:
             matrix.append(["{0:<3}".format(str(x[1])) for x in rep["columnHeaders"]])
-        # matrix.append([x[1] for x in rep["columnHeaders"]])
         for row in rep["rows"]:
             entry = [0 for _ in range(numberOfCols)]
             for c in row:
@@ -352,15 +351,6 @@ class DLX:
                 matrix.append(entry)
             
         return matrix
-
-    def test(self):
-        self.testChooseColumn()
-        # self._linkTogether()
-        # for current in self.listHeader.iterateRight():
-        #     print(current.name, current.size)
-        # for rowId,_ in enumerate(self.rows):
-        #     print(self._getRow(rowId))
-        # pprint(self._toMatrix())
 
 
 def main():
@@ -391,7 +381,7 @@ def main():
     # 3: [3,5,6]
     # 5: [2,7]
     solutions = [x for x in dlx.solve()]
-    pprint(solutions)
+    pprint(solutions[0])
 
 if __name__ == "__main__":
     main()
